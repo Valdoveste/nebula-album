@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "ubuntu", sans-serif;
+}
+
+@mixin flexCenter($align_items, $justify_content, $flex_direction) {
+    display: flex;
+    align-items: $align_items;
+    justify-content: $justify_content;
+    flex-direction: $flex_direction;
+}
+
