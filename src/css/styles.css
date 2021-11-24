@@ -10,39 +10,45 @@
   font-family: "ubuntu", sans-serif;
 }
 
-footer, header {
+footer,
+header {
   width: 100%;
   overflow: hidden;
-  padding: 15px 25px;
+  padding: 15px;
 }
 
 #main {
-  height: 100vh;
-  overflow-x: hidden;
-  margin: 25px;
+  padding: 5px;
+  overflow: hidden;
+  margin: 10px;
 }
 
-#main #img-container {
+#main #picture-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(350px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 24px;
+  -ms-grid-columns: (minmax(420px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 15px;
 }
 
-#main #img-container .img-result {
+.picture {
   position: relative;
   height: 250px;
+  overflow: hidden;
+  border-radius: 1px;
   -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0), 0 2px 6px 2px rgba(60, 64, 67, 0);
           box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0), 0 2px 6px 2px rgba(60, 64, 67, 0);
 }
 
-#main #img-container .img-result .overlay, #main #img-container .img-result img {
+.picture .overlay,
+.picture img,
+.picture a {
   width: 100%;
   height: 100%;
+  border-radius: 1px;
 }
 
-#main #img-container .img-result .overlay {
+.picture .overlay {
   cursor: pointer;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.1);
@@ -50,43 +56,89 @@ footer, header {
   transition: background-color 250ms ease-in;
 }
 
-#main #img-container .img-result .overlay .img-author {
-  z-index: 1;
+.picture .overlay .picture-author {
+  z-index: 1000;
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 0%;
-  padding: 5px;
+  width: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   text-align: right;
-  background-color: black;
   -webkit-transition: all 250ms ease-in;
   transition: all 250ms ease-in;
+  background-color: rgba(0, 0, 0, 0.296);
 }
 
-#main #img-container .img-result .overlay .img-author a {
-  -webkit-transition: all;
-  transition: all;
+.picture .overlay .picture-author a {
   overflow: hidden;
-  -webkit-transition-delay: 150ms;
-          transition-delay: 150ms;
-  color: transparent !important;
+  border-radius: 1px;
+  white-space: nowrap;
+  padding: 5px !important;
+  color: transparent;
+  -webkit-transition: color 250ms ease-in;
+  transition: color 250ms ease-in;
 }
 
-#main #img-container .img-result .overlay:hover {
-  background-color: rgba(0, 0, 0, 0);
-  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.062), 0 2px 6px 2px rgba(60, 64, 67, 0.151);
-          box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.062), 0 2px 6px 2px rgba(60, 64, 67, 0.151);
+.picture .overlay:hover {
+  background-color: transparent;
+  -webkit-box-shadow: 0 1px 2px 0 #3c4043, 0 2px 6px 2px #3c4043;
+          box-shadow: 0 1px 2px 0 #3c4043, 0 2px 6px 2px #3c4043;
 }
 
-#main #img-container .img-result .overlay:hover .img-author {
-  width: 20%;
+.picture .overlay:hover .picture-author {
+  width: 30%;
 }
 
-#main #img-container .img-result .overlay:hover .img-author a {
+.picture .overlay:hover .picture-author a {
   color: white !important;
 }
 
+@media only screen and (max-width: 900px) {
+  #main {
+    margin: 10px;
+    padding: 0;
+  }
+  #main #picture-container {
+    gap: 10px;
+    -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  #main #picture-container .picture .overlay {
+    background-color: unset;
+  }
+  #main #picture-container .picture .overlay .picture-author {
+    width: 30%;
+  }
+  #main #picture-container .picture .overlay .picture-author a {
+    color: white;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #main {
+    margin: 10px;
+    padding: 0;
+  }
+  #main #picture-container {
+    gap: 10px;
+    -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  #main #picture-container .picture .overlay {
+    background-color: unset;
+  }
+  #main #picture-container .picture .overlay .picture-author {
+    width: 30%;
+  }
+  #main #picture-container .picture .overlay .picture-author a {
+    color: white;
+  }
+}
+
 header {
+  background-color: #fff;
   border-bottom: 1px solid #dadce0;
   -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.027);
           box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.027);
@@ -109,6 +161,9 @@ header nav {
 }
 
 footer {
+  clear: both;
+  position: relative;
+  margin-top: auto;
   border-top: 1px solid #dadce0;
 }
 
@@ -130,5 +185,23 @@ footer .pagination-container .pagination {
 
 footer .pagination-container .pagination li {
   margin: 0 1.5px;
+}
+
+footer .pagination-container .pagination li a:hover {
+  color: #4527a0;
+}
+
+@media only screen and (max-width: 900px) {
+  footer,
+  header {
+    padding: 15px 10px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  footer,
+  header {
+    padding: 15px 10px;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
