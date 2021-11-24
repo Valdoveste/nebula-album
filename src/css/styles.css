@@ -2,10 +2,206 @@
   margin: 0;
   padding: 0;
   outline: 0;
+  color: #3c4043;
   list-style: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
   font-family: "ubuntu", sans-serif;
+}
+
+footer,
+header {
+  width: 100%;
+  overflow: hidden;
+  padding: 15px;
+}
+
+#main {
+  padding: 5px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+#main #picture-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(420px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 15px;
+}
+
+.picture {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0), 0 2px 6px 2px rgba(60, 64, 67, 0);
+          box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0), 0 2px 6px 2px rgba(60, 64, 67, 0);
+}
+
+.picture .overlay,
+.picture img,
+.picture a {
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+}
+
+.picture .overlay {
+  cursor: pointer;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-transition: background-color 250ms ease-in;
+  transition: background-color 250ms ease-in;
+}
+
+.picture .overlay .picture-author {
+  z-index: 1000;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  text-align: right;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  background-color: rgba(0, 0, 0, 0.296);
+}
+
+.picture .overlay .picture-author a {
+  overflow: hidden;
+  border-radius: 1px;
+  white-space: nowrap;
+  padding: 5px !important;
+  color: transparent;
+  -webkit-transition: color 250ms ease-in;
+  transition: color 250ms ease-in;
+}
+
+.picture .overlay:hover {
+  background-color: transparent;
+  -webkit-box-shadow: 0 1px 2px 0 #3c4043, 0 2px 6px 2px #3c4043;
+          box-shadow: 0 1px 2px 0 #3c4043, 0 2px 6px 2px #3c4043;
+}
+
+.picture .overlay:hover .picture-author {
+  width: 30%;
+}
+
+.picture .overlay:hover .picture-author a {
+  color: white !important;
+}
+
+@media only screen and (max-width: 900px) {
+  #main {
+    margin: 10px;
+    padding: 0;
+  }
+  #main #picture-container {
+    gap: 10px;
+    -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  #main #picture-container .picture .overlay {
+    background-color: unset;
+  }
+  #main #picture-container .picture .overlay .picture-author {
+    width: 30%;
+  }
+  #main #picture-container .picture .overlay .picture-author a {
+    color: white;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #main {
+    margin: 10px;
+    padding: 0;
+  }
+  #main #picture-container {
+    gap: 10px;
+    -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  #main #picture-container .picture .overlay {
+    background-color: unset;
+  }
+  #main #picture-container .picture .overlay .picture-author {
+    width: 30%;
+  }
+  #main #picture-container .picture .overlay .picture-author a {
+    color: white;
+  }
+}
+
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #dadce0;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.027);
+          box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.027);
+}
+
+header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: unset;
+      -ms-flex-align: unset;
+          align-items: unset;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+footer {
+  clear: both;
+  position: relative;
+  margin-top: auto;
+  border-top: 1px solid #dadce0;
+}
+
+footer .pagination-container .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+footer .pagination-container .pagination li {
+  margin: 0 1.5px;
+}
+
+footer .pagination-container .pagination li a:hover {
+  color: #4527a0;
+}
+
+@media only screen and (max-width: 900px) {
+  footer,
+  header {
+    padding: 15px 10px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  footer,
+  header {
+    padding: 15px 10px;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

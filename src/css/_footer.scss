@@ -1,0 +1,20 @@
+footer {
+    clear: both;
+    position: relative;
+    margin-top: auto;
+    border-top: 1px solid #dadce0;
+
+    .pagination-container {
+
+        .pagination {
+            @include flexCenter(center, center, row);
+
+            li {
+                margin: 0 1.5px;
+                a:hover {
+                    color: #4527a0;
+                }
+            }
+        }
+    }
+}
