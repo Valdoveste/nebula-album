@@ -3,6 +3,19 @@ const API_KEY = '563492ad6f917000010000019231e1ac10524c74ba3c7a67d31f7464';
 var index = 1;
 var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
 
+var prev = document.getElementById('pag-prev').addEventListener('click', (e) => {
+    index--;
+    baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
+
+    getPost(baseURL).then(resp => {
+        return resp.json()
+    }).then(data => {
+        pictureContainer.innerHTML = "";
+        generatePictureHTML(data.photos);
+    })
+
+});
+
 var next = document.getElementById('pag-next').addEventListener('click', (e) => {
     index++;
     baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
