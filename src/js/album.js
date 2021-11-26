@@ -1,5 +1,5 @@
 const pictureContainer = document.getElementById('picture-container');
-const API_KEY = '563492ad6f917000010000019231e1ac10524c74ba3c7a67d31f7464';
+const API_KEY = '';
 var index = 1;
 var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
 
