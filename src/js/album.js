@@ -1,57 +1,31 @@
 const pictureContainer = document.getElementById('picture-container');
-const API_KEY = '563492ad6f917000010000019231e1ac10524c74ba3c7a67d31f7464';
-var index = 1;
-var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
+const API_KEY = '';
+const limit = 40;
+var pagIndex = 1;
+var baseURL = `https://api.pexels.com/v1/curated?page=${pagIndex}&per_page=${limit}`;
 
-var prev = document.getElementById('pag-prev').addEventListener('click', (e) => {
-    index--;
-    baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
+const searchedSubject = document.getElementById('search-subject');
 
-    getPost(baseURL).then(resp => {
-        return resp.json()
-    }).then(data => {
-        pictureContainer.innerHTML = "";
-        generatePictureHTML(data.photos);
-    })
-
+searchedSubject.addEventListener('change', (input) => {
+    searchPhoto(input.target.value);
 });
 
-var next = document.getElementById('pag-next').addEventListener('click', (e) => {
-    index++;
-    baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
+const inputPage = document.getElementById('pag-number');
 
-    getPost(baseURL).then(resp => {
-        return resp.json()
-    }).then(data => {
-        pictureContainer.innerHTML = "";
-        generatePictureHTML(data.photos);
-    })
+inputPage.value = pagIndex;
 
+inputPage.addEventListener('change', (input) => {
+    pagination(input.target.value, searchedSubject.value)
 });
 
-function generatePictureHTML(picture) {
-    picture.forEach(picture => {
-        const item = document.createElement('div');
-        item.classList.add('picture');
-        item.innerHTML = `
-        <div class="overlay">
-            <div class="picture-author">
-                <a href="${
-            picture.photographer_url
-        }">${
-            picture.photographer
-        }</a>
-            </div>
-        </div>
-        <img src="${
-            picture.src.landscape
-        }" alt=""></img>
-        `
-        pictureContainer.appendChild(item);
-    });
-}
+const btnPagNext = document.getElementById('pag-prev').addEventListener('click', () => {
+    if ((pagIndex - 1) != 0) 
+        pagination(--pagIndex, searchedSubject.value);
+});
 
-function getPost(baseURL) {
+const btnPagPrev = document.getElementById('pag-next').addEventListener('click', () => pagination(++pagIndex, searchedSubject.value));
+
+function requestAccessAPI(baseURL) {
     const res = fetch(baseURL, {
         method: 'GET',
         headers: {
@@ -63,11 +37,60 @@ function getPost(baseURL) {
     return res;
 }
 
-window.onload = function () {
-    getPost(baseURL).then(resp => {
+function searchPhoto(searchedSubject) {
+    inputPage.value = 1;
+    baseURL = `https://api.pexels.com/v1/search?query=${searchedSubject}&page=1&per_page=${limit}`
+
+    requestAccessAPI(baseURL).then(resp => {
         return resp.json()
     }).then(data => {
-        console.log(data.photos[0]);
+        pictureContainer.innerHTML = "";
+        generatePictureHTML(data.photos);
+    })
+}
+
+function pagination(pagIndex, searchedSubject) {
+    inputPage.value = pagIndex;
+    if (searchedSubject.length == 0) {
+        baseURL = `https://api.pexels.com/v1/curated?page=${pagIndex}&per_page=${limit}`;
+    } else {
+        baseURL = `https://api.pexels.com/v1/search?query=${searchedSubject}&page=${pagIndex}&per_page=${limit}`
+    } 
+
+    requestAccessAPI(baseURL).then(resp => {
+        return resp.json()
+    }).then(data => {
+        pictureContainer.innerHTML = "";
+        generatePictureHTML(data.photos);
+    })
+}
+
+function generatePictureHTML(pictures) {
+    pictures.forEach(picture => {
+        const item = document.createElement('div');
+        item.classList.add('picture');
+        item.innerHTML = `
+        <div class="overlay">
+            <div class="picture-author">
+                <a href="${
+            picture.photographer_baseURL
+        }">${
+            picture.photographer
+        }</a>
+            </div>
+        </div>
+        <img src="${
+            picture.src.landscape
+        }" alt="" loading="lazy"></img>
+        `
+        pictureContainer.appendChild(item);
+    });
+}
+
+window.onload = function () {
+    requestAccessAPI(baseURL).then(resp => {
+        return resp.json()
+    }).then(data => {
         generatePictureHTML(data.photos);
     })
 }
