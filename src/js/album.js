@@ -4,6 +4,7 @@ const limit = 40;
 var pagIndex = 1;
 var baseURL = `https://api.pexels.com/v1/curated?page=${pagIndex}&per_page=${limit}`;
 
+
 const searchedSubject = document.getElementById('search-subject');
 
 searchedSubject.addEventListener('change', (input) => {
