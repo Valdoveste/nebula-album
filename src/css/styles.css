@@ -88,7 +88,7 @@ header {
 }
 
 .picture .overlay:hover .picture-author {
-  width: 30%;
+  width: 100%;
 }
 
 .picture .overlay:hover .picture-author a {
