@@ -10,16 +10,31 @@
   font-family: "ubuntu", sans-serif;
 }
 
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: unset;
+      -ms-flex-align: unset;
+          align-items: unset;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+}
+
 footer,
 header {
   width: 100%;
-  overflow: hidden;
   padding: 15px;
 }
 
 #main {
   padding: 5px;
-  overflow: hidden;
   margin: 10px;
 }
 
@@ -161,8 +176,6 @@ header nav {
 }
 
 footer {
-  clear: both;
-  position: relative;
   margin-top: auto;
   border-top: 1px solid #dadce0;
 }

@@ -18,10 +18,15 @@ $hzMarginValue: 15px;
     flex-direction: $flex_direction;
 }
 
+body{
+    @include flexCenter(unset, unset, column);
+    height: 100vh;
+}
+
 footer,
 header {
     width: 100%;
-    overflow: hidden;
+    // overflow: hidden;
     padding: $hzMarginValue;
 }
 
