@@ -1,11 +1,21 @@
-const pictureContainer = document.getElementById('picture-container');
-const API_KEY = '';
+import API_KEY from './ApiKey.js'
+
 var index = 1;
-var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
+const pictureContainer = document.getElementById('picture-container');
+var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=12`;
+
+
+const fabGrid = document.getElementById('fab-main-grid').addEventListener('click', (fabGrid) => {
+    if (fabGrid.target.checked)
+        pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(150px, 1fr))";
+    else
+        pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
+});
+
 
 var prev = document.getElementById('pag-prev').addEventListener('click', (e) => {
     index--;
-    baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
+    baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=12`;
 
     getPost(baseURL).then(resp => {
         return resp.json()
@@ -18,7 +28,7 @@ var prev = document.getElementById('pag-prev').addEventListener('click', (e) => 
 
 var next = document.getElementById('pag-next').addEventListener('click', (e) => {
     index++;
-    baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=40`;
+    baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=12`;
 
     getPost(baseURL).then(resp => {
         return resp.json()
@@ -36,16 +46,13 @@ function generatePictureHTML(picture) {
         item.innerHTML = `
         <div class="overlay">
             <div class="picture-author">
-                <a href="${
-            picture.photographer_url
-        }">${
-            picture.photographer
-        }</a>
+                <a href="${picture.photographer_url
+            }">${picture.photographer
+            }</a>
             </div>
         </div>
-        <img src="${
-            picture.src.landscape
-        }" alt=""></img>
+        <img src="${picture.src.landscape
+            }" alt=""></img>
         `
         pictureContainer.appendChild(item);
     });
@@ -67,7 +74,14 @@ window.onload = function () {
     getPost(baseURL).then(resp => {
         return resp.json()
     }).then(data => {
-        console.log(data.photos[0]);
+        // console.log(data.photos[0]);
         generatePictureHTML(data.photos);
     })
 }
+
+window.addEventListener("resize", (e) => {
+    if (window.screen.availWidth <= 450 || window.screen.availWidth >= 800)
+        pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
+    if (window.screen.availWidth > 900)
+        pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(420px, 1fr))";
+});

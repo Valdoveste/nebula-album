@@ -1,4 +1,4 @@
-$hzMarginValue: 15px;
+$paddingValue: 15px;
 
 * {
     margin: 0;
@@ -18,28 +18,34 @@ $hzMarginValue: 15px;
     flex-direction: $flex_direction;
 }
 
+body {
+    background-color: #f3f4f6;
+}
+
+@import './_picture.scss';
+@import './_modal.scss';
+
 footer,
 header {
     width: 100%;
     overflow: hidden;
-    padding: $hzMarginValue;
+    padding: $paddingValue;
+    background-color: #ffffff;
 }
 
-@import './_picture.scss';
 @import './_header.scss';
 @import './_footer.scss';
-@import './_modal.scss';
 
 @media only screen and(max-width: 900px) {
     footer,
     header {
-        padding: $hzMarginValue ($hzMarginValue - 5px);
+        padding: $paddingValue($paddingValue - 5px);
     }
 }
 
 @media only screen and(max-width: 450px) {
     footer,
     header {
-        padding: $hzMarginValue ($hzMarginValue - 5px);
+        padding: $paddingValue($paddingValue - 5px);
     }
 }

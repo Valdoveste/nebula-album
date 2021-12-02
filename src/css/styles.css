@@ -10,17 +10,14 @@
   font-family: "ubuntu", sans-serif;
 }
 
-footer,
-header {
-  width: 100%;
-  overflow: hidden;
-  padding: 15px;
+body {
+  background-color: #f3f4f6;
 }
 
 #main {
   padding: 5px;
-  overflow: hidden;
   margin: 10px;
+  background-color: #f3f4f6;
 }
 
 #main #picture-container {
@@ -95,6 +92,65 @@ header {
   color: white !important;
 }
 
+#floating-action-button-container {
+  display: none;
+}
+
+#floating-action-button-container .fab {
+  display: none;
+  z-index: 1;
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 60%;
+  background-color: #fff;
+  border: 1px solid;
+  border-color: #d1d2d4d4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.075);
+          box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.075);
+}
+
+#floating-action-button-container .fab i {
+  color: black;
+  font-size: 1.5rem;
+}
+
+#floating-action-button-container .fab .fa-2grid {
+  width: 24px;
+  height: 24px;
+  display: none;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+#floating-action-button-container #fab-main,
+#floating-action-button-container #fab-main > * {
+  cursor: pointer;
+}
+
+#floating-action-button-container #fab-main #fab-main-grid:checked ~ label i {
+  display: none;
+}
+
+#floating-action-button-container #fab-main #fab-main-grid:checked ~ label i ~ .fa-2grid {
+  display: block;
+}
+
 @media only screen and (max-width: 900px) {
   #main {
     margin: 10px;
@@ -102,8 +158,6 @@ header {
   }
   #main #picture-container {
     gap: 10px;
-    -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
   #main #picture-container .picture .overlay {
     background-color: unset;
@@ -117,47 +171,81 @@ header {
 }
 
 @media only screen and (max-width: 450px) {
+  #floating-action-button-container,
+  .fab {
+    display: block;
+  }
+  header {
+    top: 0;
+    z-index: 1;
+    position: fixed;
+  }
+  header #search-subject {
+    border-width: 0 0 1.5px 0;
+  }
   #main {
-    margin: 10px;
+    margin: 0;
     padding: 0;
   }
   #main #picture-container {
-    gap: 10px;
-    -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1px;
+    margin: 50px 0 0;
+  }
+  #main #picture-container .picture {
+    height: 150px;
   }
   #main #picture-container .picture .overlay {
-    background-color: unset;
+    background-color: none;
   }
   #main #picture-container .picture .overlay .picture-author {
-    width: 30%;
+    z-index: 0;
+    width: 0;
   }
   #main #picture-container .picture .overlay .picture-author a {
     color: white;
   }
+  footer {
+    display: none;
+  }
+}
+
+footer,
+header {
+  width: 100%;
+  overflow: hidden;
+  padding: 15px;
+  background-color: #ffffff;
 }
 
 header {
-  background-color: #fff;
   border-bottom: 1px solid #dadce0;
   -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.027);
           box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.027);
 }
 
-header nav {
+header nav,
+header nav ul {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: unset;
-      -ms-flex-align: unset;
-          align-items: unset;
-  -webkit-box-pack: unset;
-      -ms-flex-pack: unset;
-          justify-content: unset;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+header nav ul li,
+header nav ul li input {
+  width: 100%;
 }
 
 footer {
