@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="stylesheet" href="./src/css/styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://kit.fontawesome.com/bf5a148623.js" crossorigin="anonymous"></script>
-        <title>Nebula</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./src/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/bf5a148623.js" crossorigin="anonymous"></script>
+    <title>Nebula</title>
+</head>
 
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><img class="logo" src="" alt="Nebula logo"></li>
-                    <li><input type="text" name="" id="search-subject"></li>
-                </ul>
-            </nav>
-        </header>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><img class="logo" src="" alt="Nebula logo"></li>
+                <li><input type="text" name="" id="search-subject"></li>
+            </ul>
+        </nav>
+    </header>
 
-        <main id="main">
-            <div id="floating-action-button-container">
-                <div class="fab" id="fab-main">
-                    <!-- <input id="fab-main-grid" name="fab-main-grid" type="checkbox"> -->
-                    <input id="fab-main-grid" name="fab-main-grid" type="checkbox" style="display:none;">
-                    <label for="fab-main-grid">
-                        <i class="fas fa-th-large"></i>
-                        <!-- <i class="fas fa-pause"></i>
+    <main id="main">
+        <div id="floating-action-button-container">
+            <div class="fab" id="fab-main">
+                <!-- <input id="fab-main-grid" name="fab-main-grid" type="checkbox"> -->
+                <input id="fab-main-grid" name="fab-main-grid" type="checkbox" style="display:none;">
+                <label for="fab-main-grid">
+                    <i class="fas fa-th-large"></i>
+                    <!-- <i class="fas fa-pause"></i>
                          -->
-                            <svg class="fa-2grid" version="1.0" xmlns="http://www.w3.org/2000/svg"
-                            width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
-                            preserveAspectRatio="xMidYMid meet">
-                           
-                           <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                           fill="#000000" stroke="none">
-                           <path d="M160 4787 c-49 -16 -133 -102 -148 -153 -17 -59 -17 -1689 0 -1748
+                    <svg class="fa-2grid" version="1.0" xmlns="http://www.w3.org/2000/svg" width="512.000000pt"
+                        height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000"
+                            stroke="none">
+                            <path d="M160 4787 c-49 -16 -133 -102 -148 -153 -17 -59 -17 -1689 0 -1748
                            16 -55 99 -138 154 -154 32 -9 576 -12 2396 -12 2654 0 2412 -8 2491 80 24 26
                            49 66 55 88 17 56 17 1688 0 1744 -6 22 -31 62 -55 88 -79 88 164 80 -2497 79
-                           -1691 -1 -2371 -4 -2396 -12z"/>
-                           <path d="M160 2387 c-49 -16 -133 -102 -148 -153 -17 -59 -17 -1689 0 -1748
+                           -1691 -1 -2371 -4 -2396 -12z" />
+                            <path d="M160 2387 c-49 -16 -133 -102 -148 -153 -17 -59 -17 -1689 0 -1748
                            16 -55 99 -138 154 -154 32 -9 576 -12 2396 -12 2654 0 2412 -8 2491 80 24 26
                            49 66 55 88 17 56 17 1688 0 1744 -6 22 -31 62 -55 88 -79 88 164 80 -2497 79
-                           -1691 -1 -2371 -4 -2396 -12z"/>
-                           </g>
-                           </svg>
-                    </label>
-                </div>
-                <!-- <div class="fab" id="fab-search">
+                           -1691 -1 -2371 -4 -2396 -12z" />
+                        </g>
+                    </svg>
+                </label>
+            </div>
+            <!-- <div class="fab" id="fab-search">
                     <i class="fas fa-search"></i>
                 </div> -->
-            </div>
-            <section id="picture-container"></section>
-        </main>
+        </div>
+        <section id="picture-container"></section>
+    </main>
 
-        <footer>
-            <div class="pagination-container">
-                <ul class="pagination">
-                    <li>
-                        <button id="pag-prev" href="#">&laquo;</button>
-                    </li>
-                    <li>
-                        <input type="text" name="" id="pag-number"></li>
-                    <li>
-                        <button id="pag-next" href="#">&raquo;</button>
-                    </li>
-                </ul>
-            </div>
-        </footer>
-        <script  type="module" src="./src/js/album.js"></script>
-    </body>
+    <footer>
+        <div class="pagination-container">
+            <ul class="pagination">
+                <li>
+                    <button id="prev-page" href="#">&laquo;</button>
+                </li>
+                <li>
+                    <input type="text" name="" id="page-number">
+                </li>
+                <li>
+                    <button id="next-page" href="#">&raquo;</button>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script type="module" src="./src/js/Album.js"></script>
+</body>
 
 </html>
