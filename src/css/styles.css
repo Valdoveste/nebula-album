@@ -180,16 +180,12 @@ body {
     z-index: 1;
     position: fixed;
   }
-  header #search-subject {
-    border-width: 0 0 1.5px 0;
-  }
   #main {
     margin: 0;
     padding: 0;
   }
   #main #picture-container {
     gap: 1px;
-    margin: 50px 0 0;
   }
   #main #picture-container .picture {
     height: 150px;
@@ -218,7 +214,7 @@ header {
 }
 
 header {
-  border-bottom: 1px solid #dadce0;
+  border-bottom: solid #dadce0;
   -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.027);
           box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.027);
 }
@@ -226,26 +222,46 @@ header {
 header nav,
 header nav ul {
   width: 100%;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: unset;
+      -ms-flex-pack: unset;
+          justify-content: unset;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
 }
 
-header nav ul li,
-header nav ul li input {
+header .logo {
+  height: 100%;
+  width: 150px;
+  margin: 0 20px 0 0;
+}
+
+header li:nth-child(2) {
+  width: 200px;
+}
+
+header li:nth-child(2) #search-subject {
   width: 100%;
+  float: right;
+  font-size: 1rem;
+  padding: 2.5px 5px;
+  border-color: #d1d2d4;
+  border-width: 0 0 1px 0;
+  -webkit-transition: border-color 500ms ease;
+  transition: border-color 500ms ease;
+}
+
+header li:nth-child(2) #search-subject:focus {
+  border-color: #2F1A6E;
 }
 
 footer {
@@ -280,6 +296,29 @@ footer .pagination-container .pagination li a:hover {
 }
 
 @media only screen and (max-width: 900px) {
+  header li:nth-child(2),
+  header #search-subject {
+    width: 40%;
+  }
+  header nav,
+  header nav ul {
+    width: 100%;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
   footer,
   header {
     padding: 15px 10px;
@@ -287,6 +326,13 @@ footer .pagination-container .pagination li a:hover {
 }
 
 @media only screen and (max-width: 450px) {
+  header li:nth-child(2),
+  header #search-subject {
+    width: 100%;
+  }
+  #picture-container {
+    margin-top: 70px;
+  }
   footer,
   header {
     padding: 15px 10px;

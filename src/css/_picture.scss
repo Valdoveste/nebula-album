@@ -110,13 +110,6 @@
             }
         }
     };
-
-    // #fab-search {
-    //     right: 60px;
-    //     bottom: 10px;
-    //     width: 35px;
-    //     height: 35px;
-    // }
 }
 
 // Tablet responsive
@@ -155,10 +148,6 @@
         top: 0;
         z-index: 1;
         position: fixed;
-
-        #search-subject {
-            border-width: 0 0 1.5px 0;
-        }
     }
 
     #main {
@@ -166,7 +155,6 @@
         padding: 0;
         #picture-container {
             gap: 1px;
-            margin: 50px 0 0;
             .picture {
                 height: 150px;
                 .overlay {
