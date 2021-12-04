@@ -126,7 +126,7 @@ body {
 }
 
 #floating-action-button-container .fab i {
-  color: black;
+  color: #2F1A6E;
   font-size: 1.5rem;
 }
 
@@ -136,6 +136,10 @@ body {
   display: none;
   -ms-flex-line-pack: center;
       align-content: center;
+}
+
+#floating-action-button-container .fab .fa-2grid g {
+  fill: #2F1A6E;
 }
 
 #floating-action-button-container #fab-main,
