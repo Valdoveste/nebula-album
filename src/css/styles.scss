@@ -37,6 +37,21 @@ header {
 @import './_footer.scss';
 
 @media only screen and(max-width: 900px) {
+    header {
+
+        li:nth-child(2),
+        #search-subject {
+            width: 40%;
+        }
+
+        nav,
+        nav ul {
+            width: 100%;
+            flex-wrap: nowrap;
+            @include flexCenter(center, space-between, row);
+        }
+    }
+
     footer,
     header {
         padding: $paddingValue($paddingValue - 5px);
@@ -44,6 +59,17 @@ header {
 }
 
 @media only screen and(max-width: 450px) {
+    header {
+        li:nth-child(2),
+        #search-subject {
+            width: 100%;
+        }
+    }
+
+    #picture-container {
+        margin-top: 70px;
+    }
+
     footer,
     header {
         padding: $paddingValue($paddingValue - 5px);

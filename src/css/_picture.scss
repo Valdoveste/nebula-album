@@ -83,7 +83,7 @@
         box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.075);
 
         i {
-            color: black;
+            color: #2F1A6E;
             font-size: 1.5rem;
         }
         .fa-2grid {
@@ -91,6 +91,10 @@
             height: 24px;
             display: none;
             align-content: center;
+
+            g {
+                fill: #2F1A6E;
+            }
         }
     }
 
@@ -110,13 +114,6 @@
             }
         }
     };
-
-    // #fab-search {
-    //     right: 60px;
-    //     bottom: 10px;
-    //     width: 35px;
-    //     height: 35px;
-    // }
 }
 
 // Tablet responsive
@@ -155,10 +152,6 @@
         top: 0;
         z-index: 1;
         position: fixed;
-
-        #search-subject {
-            border-width: 0 0 1.5px 0;
-        }
     }
 
     #main {
@@ -166,7 +159,6 @@
         padding: 0;
         #picture-container {
             gap: 1px;
-            margin: 50px 0 0;
             .picture {
                 height: 150px;
                 .overlay {
