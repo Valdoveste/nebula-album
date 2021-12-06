@@ -1,10 +1,9 @@
 import API_KEY from './ApiKey.js'
 import searchPhotos from './PhotoSearch.js';
-import nextPage from './Pagination.js';
-import previusPage from './Pagination.js';
+import switchPage from './Pagination.js';
 
 var index = 1;
-export var perPageLimit = 1;
+export var perPageLimit = 40;
 export const pictureContainer = document.getElementById('picture-container');
 
 const searchSubject = document.getElementById('search-subject');
@@ -15,20 +14,20 @@ searchSubject.addEventListener('change', (subject) => {
 });
 
 const btnNextPage = document.getElementById('next-page').addEventListener('click', () => {
-    nextPage(++index, searchSubject.value);
+    switchPage(++index, searchSubject.value);
 });
 
 const btnPrevPage = document.getElementById('prev-page').addEventListener('click', () => {
     if (!(index - 1) <= 0)
-        previusPage(--index, searchSubject.value);
+        switchPage(--index, searchSubject.value);
 });
 
 export function generatePictureHTML(picture) {
     picture.forEach(picture => {
         const item = document.createElement('div');
         item.classList.add('picture');
-        item.innerHTML = 
-        `
+        item.innerHTML =
+            `
         <div class="overlay">
             <div class="picture-author">
                 <a href="${picture.photographer_url}">${picture.photographer}</a>
@@ -54,17 +53,16 @@ export default function getPost(baseURL) {
 
 window.addEventListener("load", (e) => {
     document.getElementById('page-number').placeholder = index;
-    
+
     getPost(baseURL).then(resp => {
         return resp.json()
     }).then(data => {
-        // console.log(data.photos[0].url.split('/', 5))
-        // let a = (data.photos[0].url.split('/', 5))[4].split('-', );
-        // console.log(a)
-        // console.log(data.photos[0].url)
-        // console.log(data.photos[0])
         generatePictureHTML(data.photos);
     })
+
+    setInterval(() => {
+        let main = document.getElementById('main').style.height = "auto";
+    }, 500);
 });
 
 window.addEventListener("resize", (e) => {

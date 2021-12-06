@@ -49,19 +49,20 @@
     </main>
 
     <footer>
-        <div class="pagination-container">
-            <ul class="pagination">
-                <li>
-                    <button id="prev-page" href="#">&laquo;</button>
-                </li>
-                <li>
-                    <input type="text" name="" id="page-number">
-                </li>
-                <li>
-                    <button id="next-page" href="#">&raquo;</button>
-                </li>
-            </ul>
-        </div>
+        <ul class="pagination-container">
+            <li>
+                <button id="prev-page"><i class="fas fa-caret-left"></i></button>
+            </li>
+            <li>
+                <input type="text" name="" id="page-number" maxlength="100">
+            </li>
+            <li>
+                <button id="next-page"><i class="fas fa-caret-right"></i></button>
+            </li>
+            <!-- <li> 
+                    <a href=""><i class="fab fa-github-square"></i></a>
+                </li> -->
+        </ul>
     </footer>
     <script type="module" src="./src/js/Album.js"></script>
 </body>

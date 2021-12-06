@@ -1,20 +1,45 @@
 footer {
-    clear: both;
-    position: relative;
-    margin-top: auto;
     border-top: 1px solid #dadce0;
+    @include flexCenter(center, center, row);
 
     .pagination-container {
+        @include flexCenter(center, center, row);
 
-        .pagination {
-            @include flexCenter(center, center, row);
+        #next-page,
+        #prev-page,
+        #page-number {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #d1d2d464;
+            transition: background-color 500ms ease;
 
-            li {
-                margin: 0 1.5px;
-                a:hover {
-                    color: #4527a0;
+            i {
+                font-size: 1.3rem;
+            }
+
+            &:not(#page-number):hover {
+                cursor: pointer;
+                background-color: #4527a0;
+
+                i {
+                    color: #fff;
                 }
             }
         }
+
+        #page-number {
+            text-align: center;
+            border-radius: 0;
+            width: 35px !important;
+        }
+
+        #prev-page {
+            border-radius: 40px 0 0 40px;
+        }
+
+        #next-page {
+            border-radius: 0 40px 40px 0;
+        }
+
     }
 }
