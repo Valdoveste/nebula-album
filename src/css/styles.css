@@ -12,11 +12,13 @@
 
 body {
   background-color: #f3f4f6;
+  height: 100vh;
 }
 
 #main {
   padding: 5px;
   margin: 10px;
+  height: 100%;
   background-color: #f3f4f6;
 }
 
@@ -269,13 +271,7 @@ header li:nth-child(2) #search-subject:focus {
 }
 
 footer {
-  clear: both;
-  position: relative;
-  margin-top: auto;
   border-top: 1px solid #dadce0;
-}
-
-footer .pagination-container .pagination {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -291,12 +287,63 @@ footer .pagination-container .pagination {
           flex-direction: row;
 }
 
-footer .pagination-container .pagination li {
-  margin: 0 1.5px;
+footer .pagination-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-footer .pagination-container .pagination li a:hover {
-  color: #4527a0;
+footer .pagination-container #next-page,
+footer .pagination-container #prev-page,
+footer .pagination-container #page-number {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d1d2d464;
+  -webkit-transition: background-color 500ms ease;
+  transition: background-color 500ms ease;
+}
+
+footer .pagination-container #next-page i,
+footer .pagination-container #prev-page i,
+footer .pagination-container #page-number i {
+  font-size: 1.3rem;
+}
+
+footer .pagination-container #next-page:not(#page-number):hover,
+footer .pagination-container #prev-page:not(#page-number):hover,
+footer .pagination-container #page-number:not(#page-number):hover {
+  cursor: pointer;
+  background-color: #4527a0;
+}
+
+footer .pagination-container #next-page:not(#page-number):hover i,
+footer .pagination-container #prev-page:not(#page-number):hover i,
+footer .pagination-container #page-number:not(#page-number):hover i {
+  color: #fff;
+}
+
+footer .pagination-container #page-number {
+  text-align: center;
+  border-radius: 0;
+  width: 35px !important;
+}
+
+footer .pagination-container #prev-page {
+  border-radius: 40px 0 0 40px;
+}
+
+footer .pagination-container #next-page {
+  border-radius: 0 40px 40px 0;
 }
 
 @media only screen and (max-width: 900px) {
