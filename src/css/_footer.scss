@@ -25,6 +25,7 @@ footer {
                     fill: #fff;
                 }
             }
+
         }
 
         #page-number {
@@ -36,6 +37,15 @@ footer {
         #prev-page {
             border-radius: 40px 0 0 40px;
         }
+
+        #prev-page:disabled:hover,
+        #next-page:disabled:hover {
+            cursor: default !important;
+            background-color: #e9e9ed !important;
+            svg path{
+                fill: #3c4043 !important;
+            }
+        }   
 
         #next-page {
             border-radius: 0 40px 40px 0;

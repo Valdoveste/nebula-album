@@ -383,6 +383,17 @@ footer .pagination-container #prev-page {
   border-radius: 40px 0 0 40px;
 }
 
+footer .pagination-container #prev-page:disabled:hover,
+footer .pagination-container #next-page:disabled:hover {
+  cursor: default !important;
+  background-color: #e9e9ed !important;
+}
+
+footer .pagination-container #prev-page:disabled:hover svg path,
+footer .pagination-container #next-page:disabled:hover svg path {
+  fill: #3c4043 !important;
+}
+
 footer .pagination-container #next-page {
   border-radius: 0 40px 40px 0;
 }

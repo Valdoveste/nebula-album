@@ -18,6 +18,6 @@ export default function switchPage(index, subject) {
         return resp.json()
     }).then(data => {
         pictureContainer.innerHTML = "";
-        generatePictureHTML(data.photos);
+        generatePictureHTML(data.photos, data.total_results);
     })
 }
