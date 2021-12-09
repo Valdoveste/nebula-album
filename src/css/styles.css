@@ -34,7 +34,7 @@ body {
   position: relative;
   height: 250px;
   overflow: hidden;
-  border-radius: 1px;
+  border-radius: 1.5px;
   -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0), 0 2px 6px 2px rgba(60, 64, 67, 0);
           box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0), 0 2px 6px 2px rgba(60, 64, 67, 0);
 }
@@ -44,7 +44,7 @@ body {
 .picture a {
   width: 100%;
   height: 100%;
-  border-radius: 1px;
+  border-radius: 1.5px;
 }
 
 .picture .overlay {
@@ -56,7 +56,7 @@ body {
 }
 
 .picture .overlay .picture-author {
-  z-index: 1000;
+  z-index: 1;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -72,7 +72,7 @@ body {
 
 .picture .overlay .picture-author a {
   overflow: hidden;
-  border-radius: 1px;
+  border-radius: 1.5px;
   white-space: nowrap;
   padding: 5px !important;
   color: transparent;
@@ -100,7 +100,7 @@ body {
 
 #floating-action-button-container .fab {
   display: none;
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   right: 5px;
   bottom: 5px;
@@ -209,6 +209,49 @@ body {
   footer {
     display: none;
   }
+}
+
+#modal {
+  z-index: 4;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 1200px;
+  max-height: 627px;
+  width: 80%;
+  height: 70%;
+  padding: 10px;
+  border-radius: 1.5px;
+  background-color: #fff;
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
+}
+
+#modal #modal-picture {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5px;
+}
+
+#modal.active {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+}
+
+#modal.active,
+#modal-overlay.active {
+  display: block;
+}
+
+#modal-overlay {
+  z-index: 3;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.606);
 }
 
 footer,
@@ -323,7 +366,7 @@ footer .pagination-container #next-page:not(#page-number):hover,
 footer .pagination-container #prev-page:not(#page-number):hover,
 footer .pagination-container #page-number:not(#page-number):hover {
   cursor: pointer;
-  background-color: #4527a0;
+  background-color: #6E3DFF;
 }
 
 footer .pagination-container #next-page:not(#page-number):hover i,
