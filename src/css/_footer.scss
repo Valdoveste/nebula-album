@@ -13,16 +13,16 @@ footer {
             border: 1px solid #d1d2d464;
             transition: background-color 500ms ease;
 
-            i {
-                font-size: 1.3rem;
+            svg{
+                width: 25px;
+                height: 25px;
             }
 
             &:not(#page-number):hover {
                 cursor: pointer;
-                background-color: #4527a0;
-
-                i {
-                    color: #fff;
+                background-color: $hoverColor;
+                svg path{
+                    fill: #fff;
                 }
             }
         }

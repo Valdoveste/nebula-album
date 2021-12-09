@@ -22,7 +22,7 @@
         </nav>
     </header>
     <div id="modal">
-            <img id="modal-picture" src="" alt="" loading="edge">
+        <img id="modal-picture" src="" alt="" loading="edge">
     </div>
 
     <main id="main">
@@ -30,11 +30,23 @@
             <div class="fab" id="fab-main">
                 <input id="fab-main-grid" name="fab-main-grid" type="checkbox" style="display:none;">
                 <label for="fab-main-grid">
-                    <i class="fas fa-th-large"></i>
-                    <svg class="fa-2grid" version="1.0" xmlns="http://www.w3.org/2000/svg" width="512.000000pt"
-                        height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
-                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000"
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="th-large"
+                        class="svg-inline--fa fa-th-large fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M296 32h192c13.255 0 24 10.745 24 24v160c0 13.255-10.745
+                            24-24 24H296c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24zm-80 0H24C10.745
+                            32 0 42.745 0 56v160c0 13.255 10.745 24 24 24h192c13.255 0 24-10.745
+                            24-24V56c0-13.255-10.745-24-24-24zM0 296v160c0 13.255 10.745 24 24 24h192c13.255
+                            0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm296
+                            184h192c13.255 0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H296c-13.255 0-24
+                            10.745-24 24v160c0 13.255 10.745 24 24 24z">
+                        </path>
+                    </svg>
+                    <svg class="fa-2grid" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="th-large"
+                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
+
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
                             stroke="none">
                             <path d="M160 4787 c-49 -16 -133 -102 -148 -153 -17 -59 -17 -1689 0 -1748
                            16 -55 99 -138 154 -154 32 -9 576 -12 2396 -12 2654 0 2412 -8 2491 80 24 26
@@ -55,17 +67,30 @@
     <footer>
         <ul class="pagination-container">
             <li>
-                <button id="prev-page"><i class="fas fa-caret-left"></i></button>
+                <button id="prev-page">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-left" class="svg-inline--fa fa-caret-left fa-w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
+                        <path fill="currentColor" d="M192 127.338v257.324c0 17.818-21.543 26.741-34.142
+                            14.142L29.196 270.142c-7.81-7.81-7.81-20.474 0-28.284l128.662-128.662c12.599-12.6
+                            34.142-3.676 34.142 14.142z">
+                        </path>
+                    </svg>
+                </button>
             </li>
             <li>
                 <input type="text" name="" id="page-number" maxlength="100">
             </li>
             <li>
-                <button id="next-page"><i class="fas fa-caret-right"></i></button>
+                <button id="next-page">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-right"
+                        class="svg-inline--fa fa-caret-right fa-w-6" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 192 512">
+                        <path fill="currentColor" d="M0 384.662V127.338c0-17.818 21.543-26.741
+                            34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142
+                            398.804C21.543 411.404 0 402.48 0 384.662z">
+                        </path>
+                    </svg>
+                </button>
             </li>
-            <!-- <li> 
-                    <a href=""><i class="fab fa-github-square"></i></a>
-                </li> -->
         </ul>
     </footer>
     <script type="module" src="./src/js/Album.js"></script>
