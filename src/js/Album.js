@@ -11,27 +11,32 @@ export const modalOverlay = document.getElementById('modal-overlay');
 
 var index = 1;
 var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=${perPageLimit}`;
-const searchSubject = document.getElementById('search-subject');
+const btnNextPage = document.getElementById('next-page'), 
+btnPrevPage = document.getElementById('prev-page');
 
+const searchSubject = document.getElementById('search-subject');
 searchSubject.addEventListener('change', (subject) => {
+    index = 1;
     searchPhotos(subject.target.value);
 });
 
-const btnNextPage = document.getElementById('next-page').addEventListener('click', () => {
+btnNextPage.addEventListener('click', () => {
     switchPage(++index, searchSubject.value);
 });
 
-const btnPrevPage = document.getElementById('prev-page').addEventListener('click', () => {
+btnPrevPage.addEventListener('click', () => {
     if (!(index - 1) <= 0)
         switchPage(--index, searchSubject.value);
 });
 
-export function generatePictureHTML(picture) {
+export function generatePictureHTML(picture, totalPhotosResults) {
+    disablePaginationBtn(totalPhotosResults);
+
     picture.forEach(picture => {
         const item = document.createElement('div');
         item.classList.add('picture');
         item.innerHTML =
-            `
+        `
         <div class="overlay">
             <div class="picture-author">
                 <a href="${picture.photographer_url}">${picture.photographer}</a>
@@ -42,21 +47,31 @@ export function generatePictureHTML(picture) {
         pictureContainer.appendChild(item);
     });
 
-
     const pictureX = document.querySelectorAll('.picture');
 
     for (let itemsI of pictureX) {
         itemsI.addEventListener('click', (event) => {
-            let imgSrc = (event.currentTarget.lastElementChild.src);
-            let imgAlt = (event.currentTarget.lastElementChild.alt);
-            showModal(imgSrc, imgAlt);
+            showModal(event.currentTarget.lastElementChild.src, event.currentTarget.lastElementChild.alt);
         });
     }
+}
 
-    modalOverlay.addEventListener('click', (event) => {
-        modal.classList.remove("active");
-        modalOverlay.classList.remove("active");
-    });
+function disablePaginationBtn(totalPhotosResults) {
+    let totalPages = (totalPhotosResults / perPageLimit);
+
+    if (totalPages <= 0 || index == totalPages) {
+        btnNextPage.disabled = true;
+    }
+    else {
+        btnNextPage.disabled = false;
+    }
+
+    if (index == 1) {
+        btnPrevPage.disabled = true;
+    }
+    else {
+        btnPrevPage.disabled = false;
+    }
 }
 
 export default function getPost(baseURL) {
@@ -77,8 +92,7 @@ window.addEventListener("load", (e) => {
     getPost(baseURL).then(resp => {
         return resp.json()
     }).then(data => {
-        // console.log(data.photos[0])
-        generatePictureHTML(data.photos);
+        generatePictureHTML(data.photos, data.total_results);
     });
 
     let main = setInterval(() => {
