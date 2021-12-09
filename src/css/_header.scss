@@ -28,7 +28,7 @@ header {
             transition: border-color 500ms ease;
 
             &:focus{
-                border-color: #2F1A6E;
+                border-color: $hoverColor;
             }
         }
     }

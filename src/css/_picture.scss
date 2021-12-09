@@ -1,6 +1,5 @@
 #main {
-    padding: 5px;
-    margin: 10px;
+    padding: 15px;
     height: 100%;
     background-color: #f3f4f6;
     #picture-container {
@@ -83,18 +82,15 @@
         @include flexCenter(center, center, row);
         box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.075);
 
-        i {
-            color: #2F1A6E;
-            font-size: 1.5rem;
-        }
-        .fa-2grid {
+        svg {
             width: 24px;
             height: 24px;
-            display: none;
             align-content: center;
+            // fill: $hoverColor;
 
-            g {
-                fill: #2F1A6E;
+            g,
+            path {
+                fill: $hoverColor;
             }
         }
     }
@@ -105,13 +101,17 @@
             cursor: pointer;
         }
 
-        #fab-main-grid:checked ~ label {
-            i {
-                display: none;
+        svg:last-child {
+            display: none;
+        }
 
-                & ~ .fa-2grid {
-                    display: block;
-                }
+        #fab-main-grid:checked ~ label {
+            svg:first-child {
+                display: none;
+            }
+
+            svg:last-child {
+                display: block;
             }
         }
     };
@@ -178,7 +178,7 @@
         }
     }
 
-    footer {
-        display: none;
+    footer{
+        display: none !important;
     }
 }

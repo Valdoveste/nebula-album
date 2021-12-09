@@ -1,5 +1,6 @@
 $paddingValue: 15px;
 $bRadius: 1.5px;
+$hoverColor: rgb(79, 20, 190);
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +20,6 @@ $bRadius: 1.5px;
 }
 
 body {
-    background-color: #f3f4f6;
     height:100vh;
 }
 

@@ -11,13 +11,11 @@
 }
 
 body {
-  background-color: #f3f4f6;
   height: 100vh;
 }
 
 #main {
-  padding: 5px;
-  margin: 10px;
+  padding: 15px;
   height: 100%;
   background-color: #f3f4f6;
 }
@@ -127,21 +125,16 @@ body {
           box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.075);
 }
 
-#floating-action-button-container .fab i {
-  color: #2F1A6E;
-  font-size: 1.5rem;
-}
-
-#floating-action-button-container .fab .fa-2grid {
+#floating-action-button-container .fab svg {
   width: 24px;
   height: 24px;
-  display: none;
   -ms-flex-line-pack: center;
       align-content: center;
 }
 
-#floating-action-button-container .fab .fa-2grid g {
-  fill: #2F1A6E;
+#floating-action-button-container .fab svg g,
+#floating-action-button-container .fab svg path {
+  fill: #4f14be;
 }
 
 #floating-action-button-container #fab-main,
@@ -149,11 +142,15 @@ body {
   cursor: pointer;
 }
 
-#floating-action-button-container #fab-main #fab-main-grid:checked ~ label i {
+#floating-action-button-container #fab-main svg:last-child {
   display: none;
 }
 
-#floating-action-button-container #fab-main #fab-main-grid:checked ~ label i ~ .fa-2grid {
+#floating-action-button-container #fab-main #fab-main-grid:checked ~ label svg:first-child {
+  display: none;
+}
+
+#floating-action-button-container #fab-main #fab-main-grid:checked ~ label svg:last-child {
   display: block;
 }
 
@@ -207,7 +204,7 @@ body {
     color: white;
   }
   footer {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -310,7 +307,7 @@ header li:nth-child(2) #search-subject {
 }
 
 header li:nth-child(2) #search-subject:focus {
-  border-color: #2F1A6E;
+  border-color: #4f14be;
 }
 
 footer {
@@ -356,23 +353,24 @@ footer .pagination-container #page-number {
   transition: background-color 500ms ease;
 }
 
-footer .pagination-container #next-page i,
-footer .pagination-container #prev-page i,
-footer .pagination-container #page-number i {
-  font-size: 1.3rem;
+footer .pagination-container #next-page svg,
+footer .pagination-container #prev-page svg,
+footer .pagination-container #page-number svg {
+  width: 25px;
+  height: 25px;
 }
 
 footer .pagination-container #next-page:not(#page-number):hover,
 footer .pagination-container #prev-page:not(#page-number):hover,
 footer .pagination-container #page-number:not(#page-number):hover {
   cursor: pointer;
-  background-color: #6E3DFF;
+  background-color: #4f14be;
 }
 
-footer .pagination-container #next-page:not(#page-number):hover i,
-footer .pagination-container #prev-page:not(#page-number):hover i,
-footer .pagination-container #page-number:not(#page-number):hover i {
-  color: #fff;
+footer .pagination-container #next-page:not(#page-number):hover svg path,
+footer .pagination-container #prev-page:not(#page-number):hover svg path,
+footer .pagination-container #page-number:not(#page-number):hover svg path {
+  fill: #fff;
 }
 
 footer .pagination-container #page-number {
