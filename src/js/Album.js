@@ -1,13 +1,17 @@
 import API_KEY from './ApiKey.js'
 import searchPhotos from './PhotoSearch.js';
 import switchPage from './Pagination.js';
+import showModal from './Modal.js';
 
-var index = 1;
 export var perPageLimit = 40;
 export const pictureContainer = document.getElementById('picture-container');
+export const modal = document.getElementById('modal');
+export const modalPicture = document.getElementById('modal-picture');
+export const modalOverlay = document.getElementById('modal-overlay');
 
-const searchSubject = document.getElementById('search-subject');
+var index = 1;
 var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=${perPageLimit}`;
+const searchSubject = document.getElementById('search-subject');
 
 searchSubject.addEventListener('change', (subject) => {
     searchPhotos(subject.target.value);
@@ -37,6 +41,22 @@ export function generatePictureHTML(picture) {
         `
         pictureContainer.appendChild(item);
     });
+
+
+    const pictureX = document.querySelectorAll('.picture');
+
+    for (let itemsI of pictureX) {
+        itemsI.addEventListener('click', (event) => {
+            let imgSrc = (event.currentTarget.lastElementChild.src);
+            let imgAlt = (event.currentTarget.lastElementChild.alt);
+            showModal(imgSrc, imgAlt);
+        });
+    }
+
+    modalOverlay.addEventListener('click', (event) => {
+        modal.classList.remove("active");
+        modalOverlay.classList.remove("active");
+    });
 }
 
 export default function getPost(baseURL) {
@@ -46,7 +66,7 @@ export default function getPost(baseURL) {
             Accept: 'application/json',
             Authorization: API_KEY
         }
-    })
+    });
 
     return res;
 }
@@ -57,12 +77,15 @@ window.addEventListener("load", (e) => {
     getPost(baseURL).then(resp => {
         return resp.json()
     }).then(data => {
+        // console.log(data.photos[0])
         generatePictureHTML(data.photos);
-    })
+    });
 
-    setInterval(() => {
-        let main = document.getElementById('main').style.height = "auto";
+    let main = setInterval(() => {
+        document.getElementById('main').style.height = "auto";
+        clearInterval(main)
     }, 500);
+
 });
 
 window.addEventListener("resize", (e) => {
