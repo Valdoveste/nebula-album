@@ -10,9 +10,10 @@ export const modalPicture = document.getElementById('modal-picture');
 export const modalOverlay = document.getElementById('modal-overlay');
 
 var index = 1;
+var flag = false;
 var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=${perPageLimit}`;
-const btnNextPage = document.getElementById('next-page'), 
-btnPrevPage = document.getElementById('prev-page');
+const btnNextPage = document.getElementById('next-page'),
+    btnPrevPage = document.getElementById('prev-page');
 
 const searchSubject = document.getElementById('search-subject');
 searchSubject.addEventListener('change', (subject) => {
@@ -36,7 +37,7 @@ export function generatePictureHTML(picture, totalPhotosResults) {
         const item = document.createElement('div');
         item.classList.add('picture');
         item.innerHTML =
-        `
+            `
         <div class="overlay">
             <div class="picture-author">
                 <a href="${picture.photographer_url}">${picture.photographer}</a>
@@ -51,10 +52,15 @@ export function generatePictureHTML(picture, totalPhotosResults) {
 
     for (let itemsI of pictureX) {
         itemsI.addEventListener('click', (event) => {
-            showModal(event.currentTarget.lastElementChild.src, event.currentTarget.lastElementChild.alt);
+            showModal(event.currentTarget.lastElementChild.src, event.currentTarget.lastElementChild.alt, flag);
         });
     }
 }
+
+modalOverlay.addEventListener('click', (event) => {
+    modal.classList.remove("active");
+    modalOverlay.classList.remove("active");
+});
 
 function disablePaginationBtn(totalPhotosResults) {
     let totalPages = (totalPhotosResults / perPageLimit);
@@ -100,13 +106,25 @@ window.addEventListener("load", (e) => {
         clearInterval(main)
     }, 500);
 
+    if (window.screen.availWidth <= 450 || window.screen.availWidth >= 800) {
+        flag = true;
+    }
+
+    if (window.screen.availWidth > 900) {
+        flag = false;
+    }
+
 });
 
 window.addEventListener("resize", (e) => {
-    if (window.screen.availWidth <= 450 || window.screen.availWidth >= 800)
+    if (window.screen.availWidth <= 450 || window.screen.availWidth >= 800) {
+        flag = true;
         pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
-    if (window.screen.availWidth > 900)
+    }
+    if (window.screen.availWidth > 900) {
+        flag = false;
         pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(420px, 1fr))";
+    }
 });
 
 const fabGrid = document.getElementById('fab-main-grid').addEventListener('click', (fabGrid) => {
