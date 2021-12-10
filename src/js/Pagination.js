@@ -1,11 +1,11 @@
-import { perPageLimit, pictureContainer } from "./Album.js";
+import { perPageLimit, pictureContainer, isMobileDevice } from "./Album.js";
 import { generatePictureHTML } from './Album.js';
 import getPost from './Album.js';
 var baseURL;
 
-
 export default function switchPage(index, subject) {
-    window.scrollTo(0, 0);
+    if (!(isMobileDevice))
+        window.scrollTo(0, 0);
 
     let pageNumber = document.getElementById('page-number').placeholder = index;
 
@@ -17,7 +17,9 @@ export default function switchPage(index, subject) {
     getPost(baseURL).then(resp => {
         return resp.json()
     }).then(data => {
-        pictureContainer.innerHTML = "";
+        if (!(isMobileDevice))
+            pictureContainer.innerHTML = "";
+
         generatePictureHTML(data.photos, data.total_results);
     })
 }
