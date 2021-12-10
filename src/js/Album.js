@@ -10,7 +10,7 @@ export const modalPicture = document.getElementById('modal-picture');
 export const modalOverlay = document.getElementById('modal-overlay');
 
 var index = 1;
-var flag = false;
+var isSmartPhone = false;
 var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=${perPageLimit}`;
 const btnNextPage = document.getElementById('next-page'),
     btnPrevPage = document.getElementById('prev-page');
@@ -52,7 +52,7 @@ export function generatePictureHTML(picture, totalPhotosResults) {
 
     for (let itemsI of pictureX) {
         itemsI.addEventListener('click', (event) => {
-            showModal(event.currentTarget.lastElementChild.src, event.currentTarget.lastElementChild.alt, flag);
+            showModal(event.currentTarget.lastElementChild.src, event.currentTarget.lastElementChild.alt, isSmartPhone);
         });
     }
 }
@@ -107,22 +107,22 @@ window.addEventListener("load", (e) => {
     }, 500);
 
     if (window.screen.availWidth <= 450 || window.screen.availWidth >= 800) {
-        flag = true;
+        isSmartPhone = true;
     }
 
     if (window.screen.availWidth > 900) {
-        flag = false;
+        isSmartPhone = false;
     }
 
 });
 
 window.addEventListener("resize", (e) => {
     if (window.screen.availWidth <= 450 || window.screen.availWidth >= 800) {
-        flag = true;
+        isSmartPhone = true;
         pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
     }
     if (window.screen.availWidth > 900) {
-        flag = false;
+        isSmartPhone = false;
         pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(420px, 1fr))";
     }
 });
