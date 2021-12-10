@@ -2,33 +2,36 @@ import API_KEY from './ApiKey.js'
 import searchPhotos from './PhotoSearch.js';
 import switchPage from './Pagination.js';
 import showModal from './Modal.js';
+import windowLoadContent  from './WindowFunctions.js';
+import windowInfinityScrollMobile  from './WindowFunctions.js';
+import windowWatchResize  from './WindowFunctions.js';
 
-export var perPageLimit = 40;
-export const pictureContainer = document.getElementById('picture-container');
-export const modal = document.getElementById('modal');
-export const modalPicture = document.getElementById('modal-picture');
-export const modalOverlay = document.getElementById('modal-overlay');
+export var index = 1,
+    perPageLimit = 5,
+    isMobileDevice = false,
+    baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=${perPageLimit}`;
 
-var index = 1;
-var isSmartPhone = false;
-var baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=${perPageLimit}`;
+export const pictureContainer = document.getElementById('picture-container'),
+    modal = document.getElementById('modal'),
+    modalPicture = document.getElementById('modal-picture'),
+    modalOverlay = document.getElementById('modal-overlay');
+
 const btnNextPage = document.getElementById('next-page'),
-    btnPrevPage = document.getElementById('prev-page');
+    btnPrevPage = document.getElementById('prev-page'),
+    searchSubject = document.getElementById('search-subject'),
+    fabGrid = document.getElementById('fab-main-grid');
 
-const searchSubject = document.getElementById('search-subject');
-searchSubject.addEventListener('change', (subject) => {
-    index = 1;
-    searchPhotos(subject.target.value);
-});
+export default function getPost(baseURL) {
+    const res = fetch(baseURL, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            Authorization: API_KEY
+        }
+    });
 
-btnNextPage.addEventListener('click', () => {
-    switchPage(++index, searchSubject.value);
-});
-
-btnPrevPage.addEventListener('click', () => {
-    if (!(index - 1) <= 0)
-        switchPage(--index, searchSubject.value);
-});
+    return res;
+}
 
 export function generatePictureHTML(picture, totalPhotosResults) {
     disablePaginationBtn(totalPhotosResults);
@@ -52,84 +55,53 @@ export function generatePictureHTML(picture, totalPhotosResults) {
 
     for (let itemsI of pictureX) {
         itemsI.addEventListener('click', (event) => {
-            showModal(event.currentTarget.lastElementChild.src, event.currentTarget.lastElementChild.alt, isSmartPhone);
+            showModal(event.currentTarget.lastElementChild.src, event.currentTarget.lastElementChild.alt);
         });
     }
 }
 
-modalOverlay.addEventListener('click', (event) => {
-    modal.classList.remove("active");
-    modalOverlay.classList.remove("active");
-});
-
 function disablePaginationBtn(totalPhotosResults) {
     let totalPages = (totalPhotosResults / perPageLimit);
 
-    if (totalPages <= 0 || index == totalPages) {
+    if (totalPages <= 0 || index == totalPages)
         btnNextPage.disabled = true;
-    }
-    else {
+    else
         btnNextPage.disabled = false;
-    }
 
-    if (index == 1) {
+    if (index == 1)
         btnPrevPage.disabled = true;
-    }
-    else {
+    else 
         btnPrevPage.disabled = false;
-    }
 }
 
-export default function getPost(baseURL) {
-    const res = fetch(baseURL, {
-        method: 'GET',
-        headers: {
-            Accept: 'application/json',
-            Authorization: API_KEY
-        }
-    });
+window.addEventListener("load", () => { windowLoadContent(isMobileDevice); });
 
-    return res;
-}
+window.addEventListener("scroll", () => { windowInfinityScrollMobile(); });
 
-window.addEventListener("load", (e) => {
-    document.getElementById('page-number').placeholder = index;
+window.addEventListener("resize", () => { windowWatchResize(isMobileDevice); });
 
-    getPost(baseURL).then(resp => {
-        return resp.json()
-    }).then(data => {
-        generatePictureHTML(data.photos, data.total_results);
-    });
-
-    let main = setInterval(() => {
-        document.getElementById('main').style.height = "auto";
-        clearInterval(main)
-    }, 500);
-
-    if (window.screen.availWidth <= 450 || window.screen.availWidth >= 800) {
-        isSmartPhone = true;
-    }
-
-    if (window.screen.availWidth > 900) {
-        isSmartPhone = false;
-    }
-
+searchSubject.addEventListener('change', (subject) => {
+    index = 1;
+    searchPhotos(subject.target.value);
 });
 
-window.addEventListener("resize", (e) => {
-    if (window.screen.availWidth <= 450 || window.screen.availWidth >= 800) {
-        isSmartPhone = true;
-        pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
-    }
-    if (window.screen.availWidth > 900) {
-        isSmartPhone = false;
-        pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(420px, 1fr))";
-    }
+btnNextPage.addEventListener('click', () => {
+    switchPage(++index, searchSubject.value);
 });
 
-const fabGrid = document.getElementById('fab-main-grid').addEventListener('click', (fabGrid) => {
+btnPrevPage.addEventListener('click', () => {
+    if (!(index - 1) <= 0)
+        switchPage(--index, searchSubject.value);
+});
+
+fabGrid.addEventListener('click', (fabGrid) => {
     if (fabGrid.target.checked)
         pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(150px, 1fr))";
     else
         pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
+});
+
+modalOverlay.addEventListener('click', (event) => {
+    modal.classList.remove("active");
+    event.target.classList.remove("active");
 });
