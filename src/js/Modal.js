@@ -1,8 +1,6 @@
 import { modal, modalOverlay, modalPicture } from './Album.js';
 
 export default function showModal(src, alt, isSmartPhone) {
-
-    console.log(isSmartPhone);
     if(isSmartPhone)
         src = src.replace("h=627", "h=1200").replace("w=1200", "w=800");
     else if(!(isSmartPhone) && src.search('w=800') > 1)
