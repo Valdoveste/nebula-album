@@ -1,8 +1,8 @@
-import { index, baseURL, pictureContainer, isMobileDevice } from "./Album.js";
-import { generatePictureHTML } from './Album.js';
-import getPost from './Album.js';
+import getPost, { generatePictureHTML, baseURL, pictureContainer } from './Album.js';
 
-export default function windowLoadContent(isMobileDevice){
+export var isMobileDevice = false;
+
+export default function windowLoadContent(index) {
     document.getElementById('page-number').placeholder = index;
 
     getPost(baseURL).then(resp => {
@@ -25,17 +25,15 @@ export default function windowLoadContent(isMobileDevice){
     }
 }
 
-export function windowInfinityScrollMobile(){
+// export function windowInfinityScrollMobile(index, windowHeight, windowScrollTop, windowScrollHeight, flag) {
+//     if (((windowHeight + windowScrollTop) >= (windowScrollHeight - 250)) && isMobileDevice && flag) {
+//         switchPage(++index, "");
+//         // flag = false;
+//     }
+//     // console.log(flag)
+// }
 
-    let windowHeight = document.documentElement.offsetHeight,
-        windowScrollTop = document.documentElement.scrollTop,
-        windowScrollHeight = document.documentElement.scrollHeight;
-
-    if (((windowHeight + windowScrollTop) >= (windowScrollHeight - 250)) && isMobileDevice)
-        switchPage(++index, searchSubject.value);
-}
-
-export function windowWatchResize(isMobileDevice){
+export function windowWatchResize() {
     if (window.screen.availWidth <= 450 || window.screen.availWidth >= 800) {
         isMobileDevice = true;
         pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
