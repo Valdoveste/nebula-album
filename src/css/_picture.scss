@@ -87,7 +87,6 @@
             width: 24px;
             height: 24px;
             align-content: center;
-            // fill: $hoverColor;
 
             g,
             path {
@@ -136,15 +135,15 @@
                     background-color: unset;
 
                     .picture-author {
-                        width: 30%;
-
-                        a {
-                            color: white;
-                        }
+                        display: none;
                     }
                 }
             }
         }
+    }
+
+    footer{
+        display: none !important;
     }
 }
 
@@ -173,12 +172,7 @@
                     background-color: none;
 
                     .picture-author {
-                        z-index: 0;
-                        width: 0;
-
-                        a {
-                            color: white;
-                        }
+                        display: none;
                     }
                 }
             }

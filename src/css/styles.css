@@ -174,10 +174,10 @@ body {
     background-color: unset;
   }
   #main #picture-container .picture .overlay .picture-author {
-    width: 30%;
+    display: none;
   }
-  #main #picture-container .picture .overlay .picture-author a {
-    color: white;
+  footer {
+    display: none !important;
   }
 }
 
@@ -205,11 +205,7 @@ body {
     background-color: none;
   }
   #main #picture-container .picture .overlay .picture-author {
-    z-index: 0;
-    width: 0;
-  }
-  #main #picture-container .picture .overlay .picture-author a {
-    color: white;
+    display: none;
   }
   footer {
     display: none !important;
@@ -237,6 +233,8 @@ body {
 #modal #modal-picture {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 1.5px;
 }
 
