@@ -143,6 +143,7 @@ fabGrid.addEventListener('click', (fabGrid) => {
 modalOverlay.addEventListener('click', () => {
     modal.classList.remove("active");
     modalOverlay.classList.remove("active");
+    noResultsFound.classList.remove("active")
     document.getElementsByTagName('body')[0].style.overflowY = "scroll";
 });
 

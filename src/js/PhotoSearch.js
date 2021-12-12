@@ -1,5 +1,4 @@
 import getPost, { generatePictureHTML, perPageLimit, pictureContainer, noResultsFound, modalOverlay} from './Album.js';
-import { isMobileDevice } from "./WindowFunctions.js";
 
 export default function searchPhotos(subject){
     document.getElementById('page-number').placeholder = 1;
