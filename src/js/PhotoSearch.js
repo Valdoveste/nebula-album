@@ -1,4 +1,4 @@
-import getPost, { generatePictureHTML, perPageLimit, pictureContainer } from './Album.js';
+import getPost, { generatePictureHTML, perPageLimit, pictureContainer, flag } from './Album.js';
 import { isMobileDevice } from "./WindowFunctions.js";
 
 export default function searchPhotos(subject){
@@ -8,7 +8,6 @@ export default function searchPhotos(subject){
     getPost(baseURL).then(resp => {
         return resp.json()
     }).then(data => {
-        if (!(isMobileDevice))
             pictureContainer.innerHTML = "";
             
         generatePictureHTML(data.photos, data.total_results);

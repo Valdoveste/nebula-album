@@ -102,7 +102,7 @@ window.addEventListener("scroll", () => {
         windowScrollHeight = document.documentElement.scrollHeight;
 
     if (((windowHeight + windowScrollTop) >= (windowScrollHeight - 250)) && isMobileDevice && flag) {
-        switchPage(++index, "");
+        switchPage(++index, searchSubject.value);
         flag = false;
     }
     // windowInfinityScrollMobile(index, windowHeight, windowScrollTop, windowScrollHeight, flag);
@@ -119,7 +119,7 @@ window.addEventListener("resize", () => {
 
 searchSubject.addEventListener('change', (subject) => {
     index = 1;
-    searchPhotos(subject.target.value);
+    searchPhotos(subject.target.value, flag);
 });
 
 btnNextPage.addEventListener('click', () => {
