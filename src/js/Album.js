@@ -14,7 +14,9 @@ export const pictureContainer = document.getElementById('picture-container'),
     modal = document.getElementById('modal'),
     modalPicture = document.getElementById('modal-picture'),
     modalOverlay = document.getElementById('modal-overlay'),
-    closeModal = document.getElementById('close-modal');
+    closeModal = document.getElementById('close-modal'),
+    noResultsFound = document.getElementById('no-results-found');
+
 
 const btnNextPage = document.getElementById('next-page'),
     btnPrevPage = document.getElementById('prev-page'),

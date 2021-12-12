@@ -1,4 +1,7 @@
-#modal {
+
+
+#modal,
+#no-results-found {
     z-index: 4;
     position: fixed;
     top: 50%;
@@ -42,6 +45,19 @@
 
 }
 
+#no-results-found{
+    width: 100%;
+    color: white;
+    max-width: none;
+    max-height: none;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bolder;
+    height: min-content;
+    background-color: transparent;
+}
+
+#no-results-found.active,
 #modal.active {
     transform: translate(-50%, -50%) scale(1);
 }
