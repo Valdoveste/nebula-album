@@ -1,6 +1,7 @@
 #main {
     padding: 15px;
     height: 100%;
+    overflow-x: hidden;
     background-color: #f3f4f6;
     #picture-container {
         display: grid;
@@ -86,7 +87,6 @@
             width: 24px;
             height: 24px;
             align-content: center;
-            // fill: $hoverColor;
 
             g,
             path {
@@ -125,19 +125,25 @@
         #picture-container {
             gap: 10px;
             .picture {
+                    &,
+                    .overlay,
+                    img,
+                    a {
+                        object-fit: cover;
+                    }
                 .overlay {
                     background-color: unset;
 
                     .picture-author {
-                        width: 30%;
-
-                        a {
-                            color: white;
-                        }
+                        display: none;
                     }
                 }
             }
         }
+    }
+
+    footer{
+        display: none !important;
     }
 }
 
@@ -166,12 +172,7 @@
                     background-color: none;
 
                     .picture-author {
-                        z-index: 0;
-                        width: 0;
-
-                        a {
-                            color: white;
-                        }
+                        display: none;
                     }
                 }
             }
