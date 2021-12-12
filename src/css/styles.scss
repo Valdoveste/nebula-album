@@ -1,0 +1,83 @@
+$paddingValue: 15px;
+$bRadius: 1.5px;
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    color: #3c4043;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "ubuntu", sans-serif;
+}
+
+@mixin flexCenter($align_items, $justify_content, $flex_direction) {
+    display: flex;
+    align-items: $align_items;
+    justify-content: $justify_content;
+    flex-direction: $flex_direction;
+}
+
+body {
+    height:100vh;
+}
+
+svg path, 
+svg g,
+path{
+    fill: #000;
+}
+
+@import './_picture.scss';
+@import './_modal.scss';
+
+footer,
+header {
+    width: 100%;
+    overflow: hidden;
+    padding: $paddingValue;
+    background-color: #ffffff;
+}
+
+@import './_header.scss';
+@import './_footer.scss';
+
+@media only screen and(max-width: 900px) {
+    header {
+
+        li:nth-child(2),
+        #search-subject {
+            width: 40%;
+        }
+
+        nav,
+        nav ul {
+            width: 100%;
+            flex-wrap: nowrap;
+            @include flexCenter(center, space-between, row);
+        }
+    }
+
+    footer,
+    header {
+        padding: $paddingValue($paddingValue - 5px);
+    }
+}
+
+@media only screen and(max-width: 450px) {
+    header {
+        li:nth-child(2),
+        #search-subject {
+            width: 100%;
+        }
+    }
+
+    #picture-container {
+        margin-top: 70px;
+    }
+
+    footer,
+    header {
+        padding: $paddingValue($paddingValue - 5px);
+    }
+}

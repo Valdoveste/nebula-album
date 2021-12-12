@@ -1,0 +1,55 @@
+footer {
+    border-top: 1px solid #dadce0;
+    @include flexCenter(center, center, row);
+
+    .pagination-container {
+        @include flexCenter(center, center, row);
+
+        #next-page,
+        #prev-page,
+        #page-number {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #d1d2d464;
+            transition: background-color 500ms ease;
+
+            svg{
+                width: 25px;
+                height: 25px;
+            }
+
+            &:not(#page-number):hover {
+                cursor: pointer;
+                background-color: #4527a0;
+                svg path{
+                    fill: #fff;
+                }
+            }
+
+        }
+
+        #page-number {
+            text-align: center;
+            border-radius: 0;
+            width: 35px !important;
+        }
+
+        #prev-page {
+            border-radius: 40px 0 0 40px;
+        }
+
+        #prev-page:disabled:hover,
+        #next-page:disabled:hover {
+            cursor: default !important;
+            background-color: #e9e9ed !important;
+            svg path{
+                fill: #3c4043 !important;
+            }
+        }   
+
+        #next-page {
+            border-radius: 0 40px 40px 0;
+        }
+
+    }
+}

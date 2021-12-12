@@ -1,0 +1,185 @@
+#main {
+    padding: 15px;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #f3f4f6;
+    #picture-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+        gap: 15px;
+    }
+}
+
+.picture {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    border-radius: $bRadius;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0), 0 2px 6px 2px rgba(60, 64, 67, 0);
+
+    .overlay,
+    img,
+    a {
+        width: 100%;
+        height: 100%;
+        border-radius: $bRadius;
+    }
+
+    .overlay {
+        cursor: pointer;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.1);
+        transition: background-color 250ms ease-in;
+
+        .picture-author {
+            z-index: 1;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 0;
+            display: inline-flex;
+            text-align: right;
+            transition: all 250ms ease-in;
+            background: rgb(0, 0, 0);
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.02563032048757008) 0%,
+                rgba(0, 0, 0, 0.16288522244835435) 35%,
+                rgba(0, 0, 0, 0.7455182756696428) 100%
+            );
+
+            a {
+                overflow: hidden;
+                border-radius: $bRadius;
+                white-space: nowrap;
+                padding: 5px !important;
+                color: transparent;
+                transition: color 250ms ease-in;
+            }
+        }
+
+        &:hover {
+            background-color: transparent;
+            box-shadow: 0 1px 2px 0 rgb(60, 64, 67), 0 2px 6px 2px rgb(60, 64, 67);
+
+            .picture-author {
+                width: 100%;
+                a {
+                    color: white !important;
+                }
+            }
+        }
+    }
+}
+
+#floating-action-button-container {
+    display: none;
+    .fab {
+        display: none;
+        z-index: 2;
+        position: fixed;
+        right: 5px;
+        bottom: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 60%;
+        background-color: #fff;
+        border: 1px solid;
+        border-color: #d1d2d4d4;
+        @include flexCenter(center, center, row);
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.075);
+
+        svg {
+            width: 24px;
+            height: 24px;
+            align-content: center;
+        }
+    }
+
+    #fab-main {
+        &,
+        & > * {
+            cursor: pointer;
+        }
+
+        svg:last-child {
+            display: none;
+        }
+
+        #fab-main-grid:checked ~ label {
+            svg:first-child {
+                display: none;
+            }
+
+            svg:last-child {
+                display: block;
+            }
+        }
+    }
+}
+
+// Tablet responsive
+@media only screen and(max-width: 900px) {
+    #main {
+        margin: 10px;
+        padding: 0;
+        #picture-container {
+            gap: 10px;
+            .picture {
+                &,
+                .overlay,
+                img,
+                a {
+                    object-fit: cover;
+                }
+                .overlay {
+                    background-color: unset;
+
+                    .picture-author {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        display: none !important;
+    }
+}
+
+// SmartPhone responsive
+@media only screen and(max-width: 450px) {
+    #floating-action-button-container,
+    .fab {
+        display: block;
+    }
+
+    header {
+        top: 0;
+        z-index: 1;
+        position: fixed;
+    }
+
+    #main {
+        margin: 0;
+        padding: 0;
+        #picture-container {
+            gap: 1px;
+            .picture {
+                height: 150px;
+                .overlay {
+                    background-color: none;
+
+                    .picture-author {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        display: none !important;
+    }
+}

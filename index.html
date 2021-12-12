@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="https://i.imgur.com/E5qpbh3.png">
+    <link rel="stylesheet" href="./src/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/bf5a148623.js" crossorigin="anonymous"></script>
+    <title>Nebulum</title>
+</head>
+
+<body>
+    <div id="modal-overlay"></div>
+    <header>
+        <nav>
+            <ul>
+                <li><img class="logo" src="https://i.imgur.com/VHCXAaO.png" alt="Nebula logo"></li>
+                <li><input type="text" name="" id="search-subject"></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="modal">
+        <img id="modal-picture" loading="edge">
+        <div id="close-modal" class="fab">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="long-arrow-alt-down" class="svg-inline--fa fa-long-arrow-alt-down fa-w-8" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+                <path fill="currentColor" d="M168 345.941V44c0-6.627-5.373-12-12-12h-56c-6.627 0-12 5.373-12 12v301.941H41.941c-21.382 0-32.09 25.851-16.971
+                 40.971l86.059 86.059c9.373 9.373 24.569 9.373 33.941 0l86.059-86.059c15.119-15.119 4.411-40.971-16.971-40.971H168z">
+                </path>
+            </svg>
+        </div>
+    </div>
+
+    <main id="main">
+        <div id="floating-action-button-container">
+            <div class="fab" id="fab-main">
+                <input id="fab-main-grid" name="fab-main-grid" type="checkbox" style="display:none;">
+                <label for="fab-main-grid">
+
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="th-large"
+                        class="svg-inline--fa fa-th-large fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M296 32h192c13.255 0 24 10.745 24 24v160c0 13.255-10.745
+                            24-24 24H296c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24zm-80 0H24C10.745
+                            32 0 42.745 0 56v160c0 13.255 10.745 24 24 24h192c13.255 0 24-10.745
+                            24-24V56c0-13.255-10.745-24-24-24zM0 296v160c0 13.255 10.745 24 24 24h192c13.255
+                            0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm296
+                            184h192c13.255 0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H296c-13.255 0-24
+                            10.745-24 24v160c0 13.255 10.745 24 24 24z">
+                        </path>
+                    </svg>
+                    <svg class="fa-2grid" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="th-large"
+                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
+
+                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                            stroke="none">
+                            <path d="M160 4787 c-49 -16 -133 -102 -148 -153 -17 -59 -17 -1689 0 -1748
+                           16 -55 99 -138 154 -154 32 -9 576 -12 2396 -12 2654 0 2412 -8 2491 80 24 26
+                           49 66 55 88 17 56 17 1688 0 1744 -6 22 -31 62 -55 88 -79 88 164 80 -2497 79
+                           -1691 -1 -2371 -4 -2396 -12z" />
+                            <path d="M160 2387 c-49 -16 -133 -102 -148 -153 -17 -59 -17 -1689 0 -1748
+                           16 -55 99 -138 154 -154 32 -9 576 -12 2396 -12 2654 0 2412 -8 2491 80 24 26
+                           49 66 55 88 17 56 17 1688 0 1744 -6 22 -31 62 -55 88 -79 88 164 80 -2497 79
+                           -1691 -1 -2371 -4 -2396 -12z" />
+                        </g>
+                    </svg>
+                </label>
+            </div>
+        </div>
+        <section id="picture-container"></section>
+    </main>
+
+    <footer>
+        <ul class="pagination-container">
+            <li>
+                <button id="prev-page">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-left" class="svg-inline--fa fa-caret-left fa-w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512">
+                        <path fill="currentColor" d="M192 127.338v257.324c0 17.818-21.543 26.741-34.142
+                            14.142L29.196 270.142c-7.81-7.81-7.81-20.474 0-28.284l128.662-128.662c12.599-12.6
+                            34.142-3.676 34.142 14.142z">
+                        </path>
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <input type="text" name="" id="page-number" disabled>
+            </li>
+            <li>
+                <button id="next-page">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-right"
+                        class="svg-inline--fa fa-caret-right fa-w-6" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 192 512">
+                        <path fill="currentColor" d="M0 384.662V127.338c0-17.818 21.543-26.741
+                            34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142
+                            398.804C21.543 411.404 0 402.48 0 384.662z">
+                        </path>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </footer>
+    <script type="module" src="./src/js/Album.js"></script>
+</body>
+
+</html>
