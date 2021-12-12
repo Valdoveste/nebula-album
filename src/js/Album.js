@@ -2,13 +2,12 @@ import API_KEY from './ApiKey.js'
 import searchPhotos from './PhotoSearch.js';
 import switchPage from './Pagination.js';
 import showModal from './Modal.js';
-import windowLoadContent  from './WindowFunctions.js';
-import windowInfinityScrollMobile  from './WindowFunctions.js';
-import windowWatchResize  from './WindowFunctions.js';
+import windowLoadContent, { windowWatchResize, isMobileDevice } from './WindowFunctions.js';
 
-export var index = 1,
-    perPageLimit = 5,
-    isMobileDevice = false,
+var index = 1;
+
+export var perPageLimit = 40,
+    flag = false,
     baseURL = `https://api.pexels.com/v1/curated?page=${index}&per_page=${perPageLimit}`;
 
 export const pictureContainer = document.getElementById('picture-container'),
@@ -38,6 +37,7 @@ export function generatePictureHTML(picture, totalPhotosResults) {
 
     picture.forEach(picture => {
         const item = document.createElement('div');
+        item.style.backgroundColor = `${picture.avg_color}`;
         item.classList.add('picture');
         item.innerHTML =
             `
@@ -46,9 +46,18 @@ export function generatePictureHTML(picture, totalPhotosResults) {
                 <a href="${picture.photographer_url}">${picture.photographer}</a>
             </div>
         </div>
-        <img src="${picture.src.landscape}" alt="${(picture.url.split('/', 5))[4]}" loading="lazy"></img>
+        <img src="${picture.src.landscape}" loading="lazy"></img>        
         `
+
         pictureContainer.appendChild(item);
+
+        let pictureinnerImg = document.querySelectorAll('.picture img');
+
+        pictureinnerImg.forEach(innerImg => {
+            innerImg.onload = function () {
+                innerImg.alt = (picture.url.split('/', 5))[4];
+            }
+        });
     });
 
     const pictureX = document.querySelectorAll('.picture');
@@ -58,6 +67,8 @@ export function generatePictureHTML(picture, totalPhotosResults) {
             showModal(event.currentTarget.lastElementChild.src, event.currentTarget.lastElementChild.alt);
         });
     }
+    
+    flag = true;
 }
 
 function disablePaginationBtn(totalPhotosResults) {
@@ -70,15 +81,39 @@ function disablePaginationBtn(totalPhotosResults) {
 
     if (index == 1)
         btnPrevPage.disabled = true;
-    else 
+    else
         btnPrevPage.disabled = false;
 }
 
-window.addEventListener("load", () => { windowLoadContent(isMobileDevice); });
+window.addEventListener("load", () => {
+    windowLoadContent(index);
 
-window.addEventListener("scroll", () => { windowInfinityScrollMobile(); });
+    if (window.screen.availWidth <= 450
+        || window.screen.availWidth >= 800) { flag = true; }
 
-window.addEventListener("resize", () => { windowWatchResize(isMobileDevice); });
+    if (window.screen.availWidth > 900) { flag = false; }
+});
+
+window.addEventListener("scroll", () => {
+    let windowHeight = document.documentElement.offsetHeight,
+        windowScrollTop = document.documentElement.scrollTop,
+        windowScrollHeight = document.documentElement.scrollHeight;
+
+    if (((windowHeight + windowScrollTop) >= (windowScrollHeight - 250)) && isMobileDevice && flag) {
+        switchPage(++index, "");
+        flag = false;
+    }
+    // windowInfinityScrollMobile(index, windowHeight, windowScrollTop, windowScrollHeight, flag);
+});
+
+window.addEventListener("resize", () => {
+    windowWatchResize();
+
+    if (window.screen.availWidth <= 450
+        || window.screen.availWidth >= 800) { flag = true; }
+
+    if (window.screen.availWidth > 900) { flag = false; }
+});
 
 searchSubject.addEventListener('change', (subject) => {
     index = 1;
