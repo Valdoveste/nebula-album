@@ -14,7 +14,9 @@ export const pictureContainer = document.getElementById('picture-container'),
     modal = document.getElementById('modal'),
     modalPicture = document.getElementById('modal-picture'),
     modalOverlay = document.getElementById('modal-overlay'),
-    closeModal = document.getElementById('close-modal');
+    closeModal = document.getElementById('close-modal'),
+    noResultsFound = document.getElementById('no-results-found');
+
 
 const btnNextPage = document.getElementById('next-page'),
     btnPrevPage = document.getElementById('prev-page'),
@@ -102,7 +104,7 @@ window.addEventListener("scroll", () => {
         windowScrollHeight = document.documentElement.scrollHeight;
 
     if (((windowHeight + windowScrollTop) >= (windowScrollHeight - 250)) && isMobileDevice && flag) {
-        switchPage(++index, "");
+        switchPage(++index, searchSubject.value);
         flag = false;
     }
     // windowInfinityScrollMobile(index, windowHeight, windowScrollTop, windowScrollHeight, flag);
@@ -119,7 +121,7 @@ window.addEventListener("resize", () => {
 
 searchSubject.addEventListener('change', (subject) => {
     index = 1;
-    searchPhotos(subject.target.value);
+    searchPhotos(subject.target.value, flag);
 });
 
 btnNextPage.addEventListener('click', () => {
@@ -141,6 +143,7 @@ fabGrid.addEventListener('click', (fabGrid) => {
 modalOverlay.addEventListener('click', () => {
     modal.classList.remove("active");
     modalOverlay.classList.remove("active");
+    noResultsFound.classList.remove("active")
     document.getElementsByTagName('body')[0].style.overflowY = "scroll";
 });
 

@@ -1,5 +1,4 @@
-import getPost, { generatePictureHTML, perPageLimit, pictureContainer } from './Album.js';
-import { isMobileDevice } from "./WindowFunctions.js";
+import getPost, { generatePictureHTML, perPageLimit, pictureContainer, noResultsFound, modalOverlay} from './Album.js';
 
 export default function searchPhotos(subject){
     document.getElementById('page-number').placeholder = 1;
@@ -8,9 +7,12 @@ export default function searchPhotos(subject){
     getPost(baseURL).then(resp => {
         return resp.json()
     }).then(data => {
-        if (!(isMobileDevice))
             pictureContainer.innerHTML = "";
-            
+            if(data.total_results == 0){
+                noResultsFound.innerHTML= `Sorry, we couldn't find any matches. For "${subject}"`
+                noResultsFound.classList.add("active")
+                modalOverlay.classList.add("active")
+            }
         generatePictureHTML(data.photos, data.total_results);
     })
 }

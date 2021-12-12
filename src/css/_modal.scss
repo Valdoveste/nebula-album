@@ -1,4 +1,5 @@
-#modal {
+#modal,
+#no-results-found {
     z-index: 4;
     position: fixed;
     top: 50%;
@@ -39,9 +40,21 @@
             transform: rotate(-45deg);
         }
     }
-
 }
 
+#no-results-found {
+    width: 100%;
+    color: white;
+    max-width: none;
+    max-height: none;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bolder;
+    height: min-content;
+    background-color: transparent;
+}
+
+#no-results-found.active,
 #modal.active {
     transform: translate(-50%, -50%) scale(1);
 }
@@ -63,8 +76,8 @@
 // Tablet responsive
 @media only screen and(max-width: 900px) {
     // border-radius: 40px 0 0 0;
-    #modal{
-        #close-modal{
+    #modal {
+        #close-modal {
             border: none !important;
             box-shadow: none !important;
         }
