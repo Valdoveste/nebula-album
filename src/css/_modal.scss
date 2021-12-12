@@ -13,12 +13,33 @@
     transition: 200ms ease-in-out;
     transform: translate(-50%, -50%) scale(0);
 
-    #modal-picture{
+    #modal-picture {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: $bRadius;
     }
+
+    #close-modal {
+        opacity: 1;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 50px;
+        height: 50px;
+        padding: 10px 0 0 10px;
+        background-color: #fff;
+        border-radius: 40px 0 0 0;
+        @include flexCenter(center, center, row);
+        transition: opacity 500ms ease-out;
+
+        svg {
+            width: 35px;
+            height: 35px;
+            transform: rotate(-45deg);
+        }
+    }
+
 }
 
 #modal.active {
@@ -37,4 +58,30 @@
     height: 100%;
     display: none;
     background-color: rgba(0, 0, 0, 0.606);
+}
+
+// Tablet responsive
+@media only screen and(max-width: 900px) {
+    // border-radius: 40px 0 0 0;
+    #modal{
+        #close-modal{
+            border: none !important;
+            box-shadow: none !important;
+        }
+    }
+}
+
+// SmartPhone responsive
+@media only screen and(max-width: 450px) {
+    #modal {
+        max-width: 800px;
+        max-height: 1200px;
+        max-height: unset;
+        width: 97%;
+        height: 99%;
+        padding: unset;
+        border: 1px solid;
+        border-color: #d1d2d4d4;
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.055), 0 2px 6px 2px rgba(60, 64, 67, 0.075);
+    }
 }

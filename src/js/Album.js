@@ -13,7 +13,8 @@ export var perPageLimit = 40,
 export const pictureContainer = document.getElementById('picture-container'),
     modal = document.getElementById('modal'),
     modalPicture = document.getElementById('modal-picture'),
-    modalOverlay = document.getElementById('modal-overlay');
+    modalOverlay = document.getElementById('modal-overlay'),
+    closeModal = document.getElementById('close-modal');
 
 const btnNextPage = document.getElementById('next-page'),
     btnPrevPage = document.getElementById('prev-page'),
@@ -64,10 +65,11 @@ export function generatePictureHTML(picture, totalPhotosResults) {
 
     for (let itemsI of pictureX) {
         itemsI.addEventListener('click', (event) => {
+            closeModal.style.opacity = "1";
             showModal(event.currentTarget.lastElementChild.src, event.currentTarget.lastElementChild.alt);
         });
     }
-    
+
     flag = true;
 }
 
@@ -136,7 +138,27 @@ fabGrid.addEventListener('click', (fabGrid) => {
         pictureContainer.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
 });
 
-modalOverlay.addEventListener('click', (event) => {
+modalOverlay.addEventListener('click', () => {
     modal.classList.remove("active");
-    event.target.classList.remove("active");
+    modalOverlay.classList.remove("active");
+    document.getElementsByTagName('body')[0].style.overflowY = "scroll";
+});
+
+closeModal.addEventListener('click', () => {
+    modal.classList.remove("active");
+    modalOverlay.classList.remove("active");
+    closeModal.style.opacity = "0";
+    document.getElementsByTagName('body')[0].style.overflowY = "scroll";
+});
+
+modalPicture.addEventListener('click', (event) => {
+    let timerShow = setInterval(() => {
+        closeModal.style.opacity = "1";
+        clearInterval(timerShow)
+    }, 250);
+
+    let timerHide = setInterval(() => {
+        closeModal.style.opacity = "0";
+        clearInterval(timerHide)
+    }, 2500);
 });
