@@ -17,6 +17,7 @@ body {
 #main {
   padding: 15px;
   height: 100%;
+  overflow-x: hidden;
   background-color: #f3f4f6;
 }
 
@@ -161,6 +162,13 @@ body {
   }
   #main #picture-container {
     gap: 10px;
+  }
+  #main #picture-container .picture,
+  #main #picture-container .picture .overlay,
+  #main #picture-container .picture img,
+  #main #picture-container .picture a {
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   #main #picture-container .picture .overlay {
     background-color: unset;

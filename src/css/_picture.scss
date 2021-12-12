@@ -1,6 +1,7 @@
 #main {
     padding: 15px;
     height: 100%;
+    overflow-x: hidden;
     background-color: #f3f4f6;
     #picture-container {
         display: grid;
@@ -125,6 +126,12 @@
         #picture-container {
             gap: 10px;
             .picture {
+                    &,
+                    .overlay,
+                    img,
+                    a {
+                        object-fit: cover;
+                    }
                 .overlay {
                     background-color: unset;
 
