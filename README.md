@@ -4,7 +4,7 @@
 
 # Nebulum
   
-An online album with the objective to be simple, clean, and straight to the point. Consuming the Pexels API to load a massive amount of different photos.  One of the main objectives of this application was to learn more about clean & simple design also have extra care for the mobile users, applying concepts as infinityScroll and FAB(Floating Action Button) and modal that works for portrait and landscape screen orientations.
+An online album with the objective to be simple, clean, and straight to the point. Consuming the Pexels API to load a massive amount of different photos.  One of the main objectives of this application was to learn more about clean & simple design also have extra care for the mobile users, applying concepts as infinityScroll and FAB(Floating Action Button) and modal that works for portrait and landscape screen orientations. Check here to view the web app [Nebulum](https://nebulum.000webhostapp.com/)
 
 <h3 align="center">
   
