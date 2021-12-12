@@ -1,6 +1,5 @@
-import { perPageLimit, pictureContainer, isMobileDevice } from "./Album.js";
-import { generatePictureHTML } from './Album.js';
-import getPost from './Album.js';
+import getPost, { generatePictureHTML, perPageLimit, pictureContainer } from "./Album.js";
+import { isMobileDevice } from "./WindowFunctions.js";
 var baseURL;
 
 export default function switchPage(index, subject) {

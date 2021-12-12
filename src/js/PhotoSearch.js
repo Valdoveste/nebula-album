@@ -1,6 +1,5 @@
-import { perPageLimit, pictureContainer, isMobileDevice } from "./Album.js";
-import { generatePictureHTML } from './Album.js';
-import getPost  from './Album.js';
+import getPost, { generatePictureHTML, perPageLimit, pictureContainer } from './Album.js';
+import { isMobileDevice } from "./WindowFunctions.js";
 
 export default function searchPhotos(subject){
     document.getElementById('page-number').placeholder = 1;
@@ -11,7 +10,7 @@ export default function searchPhotos(subject){
     }).then(data => {
         if (!(isMobileDevice))
             pictureContainer.innerHTML = "";
-
+            
         generatePictureHTML(data.photos, data.total_results);
     })
 }
