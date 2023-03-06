@@ -28,7 +28,8 @@ Check here to view the web app [Nebulum](https://valdoveste.github.io/nebulum/).
 
 ## What this aplication needs to work?
 
-1. This aplication will need to be hosted by your localhost, cuz we are working with modules. So clone this repo inside your "www", "htdocs", or equivalent folder(I'm using Wamp so in my case is www) or just fork it and customize.
+1. This aplication will need to be hosted by your localhost, cuz we are working with modules. So clone this repo inside your "www", "htdocs", or equivalent folder(I'm using Wamp so in my case is www).
+2. Just fork it and made it "Pages"(if you chosse this way, please use your on API KEY, is very simple to get one, you'll just need an account on [Pexels](https://www.pexels.com/api/)).
 
 ## Home Page
 ![image](https://user-images.githubusercontent.com/62577482/145719124-01abeffd-3a16-489d-b9be-a5ea9e68c243.png)
