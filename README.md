@@ -28,13 +28,7 @@ Check here to view the web app [Nebulum](https://valdoveste.github.io/nebulum/).
 
 ## What this aplication needs to work?
 
-1. This aplication will need to be hosted by your localhost, cuz we are working with modules. So clone this repo inside your "www", "htdocs", or equivalent folder(I'm using Wamp so in my case is www).
-2. Create a file named as "ApiKey.js" inside the "js" folder.
-3. Then copy paste the code below and insert your on APIKEY.
-```
-  let API_KEY;
-  export default API_KEY =''; 
-```
+1. This aplication will need to be hosted by your localhost, cuz we are working with modules. So clone this repo inside your "www", "htdocs", or equivalent folder(I'm using Wamp so in my case is www) or just fork it and customize.
 
 ## Home Page
 ![image](https://user-images.githubusercontent.com/62577482/145719124-01abeffd-3a16-489d-b9be-a5ea9e68c243.png)
